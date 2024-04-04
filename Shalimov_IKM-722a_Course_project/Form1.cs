@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shalimov_IKM_722a_Course_project
@@ -14,6 +6,7 @@ namespace Shalimov_IKM_722a_Course_project
     public partial class Form1 : Form
     {
         private bool Mode;
+        private MajorWork MajorObject;
 
         public Form1()
         {
@@ -28,6 +21,10 @@ namespace Shalimov_IKM_722a_Course_project
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            var A = new About();
+            A.tAbout.Start();
+            A.ShowDialog();
+            MajorObject = new MajorWork();
             this.Mode = true;
         }
 
@@ -40,12 +37,18 @@ namespace Shalimov_IKM_722a_Course_project
                 this.Mode = false;
                 tbInput.Enabled = true;
                 tbInput.Focus();
+                MajorObject.Write(tbInput.Text);
+                MajorObject.Task();
+                label1.Text = MajorObject.Read();
             }
             else
             {
                 tClock.Stop();
                 bStart.Text = "Пуск";
                 this.Mode = true;
+                MajorObject.Write(tbInput.Text);
+                MajorObject.Task();
+                label1.Text = MajorObject.Read();
             }
         }
 
