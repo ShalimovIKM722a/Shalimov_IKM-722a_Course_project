@@ -35,5 +35,16 @@ namespace Shalimov_IKM_722a_Course_project
         {
             return this.TimeBegin;
         }
+
+        private string SaveFileName;
+        private string OpenFileName;
+        public void WriteSaveFileName(string S)
+        {
+            this.SaveFileName = S;
+        }
+        public void WriteOpenFileName(string S)
+        {
+            this.OpenFileName = S;
+        }
     }
 }
