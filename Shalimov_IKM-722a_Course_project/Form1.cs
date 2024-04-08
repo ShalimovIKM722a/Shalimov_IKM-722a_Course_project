@@ -5,8 +5,10 @@ namespace Shalimov_IKM_722a_Course_project
 {
     public partial class Form1 : Form
     {
+        private DateTime TimeBegin;
         private bool Mode;
         private MajorWork MajorObject;
+
 
         public Form1()
         {
@@ -21,10 +23,11 @@ namespace Shalimov_IKM_722a_Course_project
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            MajorObject = new MajorWork();
+            MajorObject.SetTime();
             var A = new About();
             A.tAbout.Start();
             A.ShowDialog();
-            MajorObject = new MajorWork();
             this.Mode = true;
         }
 
@@ -68,6 +71,13 @@ namespace Shalimov_IKM_722a_Course_project
                 tClock.Start();
                 e.KeyChar = (char)0;
             }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            string s;
+            s = (DateTime.Now - MajorObject.GetTime()).ToString();
+            MessageBox.Show(s,"Час роботи програми");
         }
     }
 }

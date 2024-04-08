@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace Shalimov_IKM_722a_Course_project
 {
     class MajorWork
     {
+        private DateTime TimeBegin;
         private string Data;
         private string Result;
         public void Write(string D)
@@ -22,6 +24,16 @@ namespace Shalimov_IKM_722a_Course_project
             {
                 this.Result=Convert.ToString(false);
             }
+        }
+
+        public void SetTime()
+        {
+            this.TimeBegin = DateTime.Now;
+        }
+
+        public DateTime GetTime()
+        {
+            return this.TimeBegin;
         }
     }
 }
