@@ -98,7 +98,8 @@ namespace Shalimov_IKM_722a_Course_project
         {
             if (sfdSave.ShowDialog() == DialogResult.OK)
             {
-                MajorObject.WriteSaveFileName(sfdSave.FileName);
+                MajorObject.WriteSaveFileName(sfdSave.FileName); 
+                MajorObject.Generator();
                 MajorObject.SaveToFile();
             }
         }
@@ -127,6 +128,21 @@ namespace Shalimov_IKM_722a_Course_project
                 }
             }
             MessageBox.Show(disk,"Про накопичувачи");
+        }
+
+        private void зберегтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.SaveFileNameExists())
+                MajorObject.SaveToFile(); 
+            else
+                зберегтиЯкToolStripMenuItem_Click(sender, e);
+        }
+
+        private void новийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MajorObject.NewRec();
+            tbInput.Clear();
+            label1.Text = "";
         }
     }
 }

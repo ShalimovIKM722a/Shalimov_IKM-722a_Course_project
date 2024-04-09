@@ -119,6 +119,7 @@
             this.новийToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.новийToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.новийToolStripMenuItem.Text = "Новий";
+            this.новийToolStripMenuItem.Click += new System.EventHandler(this.новийToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -144,6 +145,7 @@
             this.зберегтиToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.зберегтиToolStripMenuItem.Text = "Зберегти";
+            this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
             // 
             // зберегтиЯкToolStripMenuItem
             // 
@@ -178,13 +180,13 @@
             // 
             this.пускToolStripMenuItem.Name = "пускToolStripMenuItem";
             this.пускToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
-            this.пускToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.пускToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.пускToolStripMenuItem.Text = "Пуск";
             // 
             // проНакопичувачиToolStripMenuItem
             // 
             this.проНакопичувачиToolStripMenuItem.Name = "проНакопичувачиToolStripMenuItem";
-            this.проНакопичувачиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.проНакопичувачиToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.проНакопичувачиToolStripMenuItem.Text = "Про накопичувачи";
             this.проНакопичувачиToolStripMenuItem.Click += new System.EventHandler(this.проНакопичувачиToolStripMenuItem_Click);
             // 
@@ -199,9 +201,17 @@
             // проПрограмиToolStripMenuItem
             // 
             this.проПрограмиToolStripMenuItem.Name = "проПрограмиToolStripMenuItem";
-            this.проПрограмиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.проПрограмиToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.проПрограмиToolStripMenuItem.Text = "Про програми";
             this.проПрограмиToolStripMenuItem.Click += new System.EventHandler(this.bStart_Click);
+            // 
+            // sfdSave
+            // 
+            this.sfdSave.Filter = "рабочие файлы |*.TRP|Все файлы|*.*";
+            // 
+            // ofdOpen
+            // 
+            this.ofdOpen.Filter = "рабочие файлы |*.TRP|Все файлы|*.*";
             // 
             // Form1
             // 
