@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 
 namespace Shalimov_IKM_722a_Course_project
 {
@@ -8,6 +11,8 @@ namespace Shalimov_IKM_722a_Course_project
         private DateTime TimeBegin;
         private string Data;
         private string Result;
+        public bool Modify;
+        private int Key;
         public void Write(string D)
         {
             this.Data = D;
@@ -24,6 +29,7 @@ namespace Shalimov_IKM_722a_Course_project
             {
                 this.Result=Convert.ToString(false);
             }
+            this.Modify = true; 
         }
 
         public void SetTime()
@@ -45,6 +51,33 @@ namespace Shalimov_IKM_722a_Course_project
         public void WriteOpenFileName(string S)
         {
             this.OpenFileName = S;
+        }
+        public void SaveToFile() // Запис даних до файлу
+        {
+            if (!this.Modify)
+                return;
+            try
+            {
+                Stream S; 
+                if (File.Exists(this.SaveFileName))
+                    S = File.Open(this.SaveFileName, FileMode.Append);
+                else
+                    S = File.Open(this.SaveFileName, FileMode.Create);
+                Buffer D = new Buffer(); 
+                D.Data = this.Data;
+                D.Result = Convert.ToString(this.Result);
+                D.Key = Key;
+                BinaryFormatter BF = new BinaryFormatter(); 
+                BF.Serialize(S, D);
+                S.Flush(); 
+                S.Close(); 
+                this.Modify = false;
+            }
+            catch
+            {
+
+                MessageBox.Show("Помилка роботи з файлом"); 
+            }
         }
     }
 }
