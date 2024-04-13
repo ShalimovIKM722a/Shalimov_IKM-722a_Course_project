@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
+
 namespace Shalimov_IKM_722a_Course_project
 {
     public partial class Form1 : Form
@@ -109,6 +110,9 @@ namespace Shalimov_IKM_722a_Course_project
            if(ofdOpen.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show(ofdOpen.FileName);
+                MajorObject.WriteOpenFileName(ofdOpen.FileName);
+                MajorObject.ReadFromFile(dgwOpen);
+
             }
         }
 
@@ -144,5 +148,12 @@ namespace Shalimov_IKM_722a_Course_project
             tbInput.Clear();
             label1.Text = "";
         }
+
+        private void bSearch_Click(object sender, EventArgs e)
+        {
+            MajorObject.Find(tbSearch.Text);
+        }
+
+     
     }
 }

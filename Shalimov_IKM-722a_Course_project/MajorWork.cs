@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Data;
 using System.Windows.Forms;
 
 namespace Shalimov_IKM_722a_Course_project
@@ -52,7 +53,7 @@ namespace Shalimov_IKM_722a_Course_project
         {
             this.OpenFileName = S;
         }
-        public void SaveToFile() // Запис даних до файлу
+        public void SaveToFile() 
         {
             if (!this.Modify)
                 return;
@@ -81,34 +82,50 @@ namespace Shalimov_IKM_722a_Course_project
             }
         }
 
-        public void ReadFromFile()
+        public void ReadFromFile(System.Windows.Forms.DataGridView DG) 
         {
             try
             {
-                if (!File.Exists(this.OpenFileName)) {
-                    MessageBox.Show("Файлу немає");
+                if (!File.Exists(this.OpenFileName))
+                {
+                    MessageBox.Show("Файлу немає"); 
                     return;
                 }
-                Stream S;
-                S=File.Open(this.OpenFileName, FileMode.Open);
+                Stream S; 
+                S = File.Open(this.OpenFileName, FileMode.Open); 
                 Buffer D;
-                BinaryFormatter BF ;
-                object O;
-                BF = new BinaryFormatter();
+                object O; 
+                BinaryFormatter BF = new BinaryFormatter(); 
+                DataTable MT = new DataTable();
+                DataColumn cKey = new DataColumn("Ключ");
+                DataColumn cInput = new DataColumn("Вхідні дані");
+                DataColumn cResult = new DataColumn("Результат");
+                MT.Columns.Add(cKey);
+                MT.Columns.Add(cInput);
+                MT.Columns.Add(cResult);
+
                 while (S.Position < S.Length)
                 {
-                    O = BF.Deserialize(S); 
+                    O = BF.Deserialize(S);
                     D = O as Buffer;
                     if (D == null) break;
-                   
+                    DataRow MR;
+                    MR = MT.NewRow();
+                    MR["Ключ"] = D.Key; 
+                    MR["Вхідні дані"] = D.Data;
+                    MR["Результат"] = D.Result;
+                    MT.Rows.Add(MR);
                 }
-                S.Close(); 
+                DG.DataSource = MT;
+                S.Close();
             }
             catch
             {
-                MessageBox.Show("Помилка файлу"); // Виведення на екран повідомлення "Помилка файлу"
+                MessageBox.Show("Помилка файлу"); 
             }
+           
         }
+
 
         public void Generator() {
             try
@@ -148,11 +165,61 @@ namespace Shalimov_IKM_722a_Course_project
             else return true;
         }
 
-        public void NewRec() // новий запис
+        public void NewRec() 
         {
-            this.Data = ""; // "" - ознака порожнього рядка
-            this.Result = null; // для string- null
+            this.Data = ""; 
+            this.Result = null;
+        }
+ 
+        public void Find(string Num) {
+            int N;
+            try
+            {
+                N = Convert.ToInt16(Num);
+            }
+            catch
+            {
+                MessageBox.Show("Помилка пошукового запиту");
+                return;
+            }
+            try
+            {
+                if (!File.Exists(this.OpenFileName))
+                {
+                    MessageBox.Show("файлу немає");
+                    return;
+                }
+                Stream S; 
+                S = File.Open(this.OpenFileName, FileMode.Open); 
+                Buffer D;
+                object O; 
+                BinaryFormatter BF = new BinaryFormatter(); 
+
+               while (S.Position < S.Length)
+                {
+                    O = BF.Deserialize(S);
+                    D = O as Buffer;
+                    if (D == null) break;
+                    if (D.Key == N) {
+                        string ST;
+                        ST = "Запис містить:" + (char)13 + "No" + Num + "Вхідні дані:" +
+
+                        D.Data + "Результат:" + D.Result;
+
+                        MessageBox.Show(ST, "Запис знайдена"); 
+                        S.Close();
+                        return;
+                    }
+                }
+                S.Close();
+                MessageBox.Show("Запис не знайдена"); 
+            }
+            catch
+            {
+                MessageBox.Show("Помилка файлу"); 
+            }
         }
 
     }
-}
+
+    }
