@@ -76,6 +76,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -89,6 +90,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\зображення_viber_2023-11-16_19-40-43-456.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\зображення_viber_2023-11-16_19-40-43-4561.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\national-technical-university-kharkiv-polytechnic-institute-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\277363490017211.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
