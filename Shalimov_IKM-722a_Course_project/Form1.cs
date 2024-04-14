@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections;
+using System.Collections.Generic;
 
 
 namespace Shalimov_IKM_722a_Course_project
@@ -197,5 +199,151 @@ namespace Shalimov_IKM_722a_Course_project
             timeLabel.Text = DateTime.Now.ToLongTimeString();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MajorObject.myStack.Push(Stacktb.Text);
+
+            MajorObject.myArr[MajorObject.myArr.Length - MajorObject.myStack.Count] =
+
+            Stacktb.Text;
+
+            LabelStack.Text = "";
+            for (int i = 0; i < MajorObject.myArr.Length; i++)
+            {
+                if (MajorObject.myArr[i] != null)
+                {
+                    LabelStack.Text += MajorObject.myArr[i] + (char)13;
+                }
+                else
+
+                {
+                    continue;
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.myStack.Count > 0)
+
+            {
+                MessageBox.Show("Peek " + MajorObject.myStack.Peek());
+            }
+            if (MajorObject.myStack.Count == 0)
+                MessageBox.Show("\nСтек пуст!");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.myStack.Count == 0)
+                MessageBox.Show("\nСтек пуст!");
+            else
+            {
+                MajorObject.myArr[MajorObject.myArr.Length - MajorObject.myStack.Count] =
+
+                null;
+
+                if (MajorObject.myStack.Count > 0)
+                {
+                    MessageBox.Show("Pop " + MajorObject.myStack.Pop());
+                }
+                LabelStack.Text = "";
+                for (int i = 0; i < MajorObject.myArr.Length; i++)
+                {
+                    if (MajorObject.myArr[i] != null)
+
+                    {
+                        LabelStack.Text += MajorObject.myArr[i] + (char)13;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                if (MajorObject.myStack.Count == 0)
+                    MessageBox.Show("\nСтек пуст!");
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Enqueue_Click(object sender, EventArgs e)
+        {
+            MajorObject.myQueue.Enqueue(Queuetb.Text);
+            MajorObject.smyQueue[MajorObject.myQueue.Count - 1] = Queuetb.Text;
+            LabelQueue.Text = "";
+            for (int i = 0; i < MajorObject.smyQueue.Length; i++)
+            {
+                if (MajorObject.smyQueue[i] != null)
+                {
+                    LabelQueue.Text += MajorObject.smyQueue[i] + (char)13;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.myQueue.Count > 0)
+            {
+                MessageBox.Show("Peek " + MajorObject.myQueue.Peek());
+            }
+            if (MajorObject.myQueue.Count == 0)
+                MessageBox.Show("\nЧерга пуста!");
+        }
+
+        private void Dequeue_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.myQueue.Count == 0)
+
+                MessageBox.Show("\nЧерга порожня!");
+            else
+            {
+                MajorObject.smyQueue[0] = null;
+
+                for (int i = 0; i < MajorObject.smyQueue.Length - 1; i++)
+                {
+                    MajorObject.smyQueue[i] = MajorObject.smyQueue[i + 1];
+                }
+                
+                if (MajorObject.myQueue.Count > 0)
+                {
+                    MessageBox.Show("Dequeue " + MajorObject.myQueue.Dequeue());
+                }
+               
+                LabelQueue.Text = "";
+                for (int i = 0; i < MajorObject.smyQueue.Length - 1; i++)
+                {
+                    if (MajorObject.smyQueue[i] != null)
+                    {
+                        LabelQueue.Text += MajorObject.smyQueue[i] + (char)13;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                if (MajorObject.myQueue.Count == 0)
+                    MessageBox.Show("\nЧерга пуста!");
+            }
+        }
     }
 }

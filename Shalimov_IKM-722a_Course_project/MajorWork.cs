@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Data;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace Shalimov_IKM_722a_Course_project
 {
@@ -14,6 +15,13 @@ namespace Shalimov_IKM_722a_Course_project
         private string Result;
         public bool Modify;
         private int Key;
+
+        public Stack myStack = new Stack();
+        public string[] myArr = new string[100];
+
+        public Queue myQueue = new Queue();
+        public string[] smyQueue = new string[100];
+
         public void Write(string D)
         {
             this.Data = D;
