@@ -60,7 +60,7 @@
             // tAbout
             // 
             this.tAbout.Interval = 10000;
-            this.tAbout.Tick += new System.EventHandler(this.timer1_Tick);
+            this.tAbout.Tick += new System.EventHandler(this.tAbout_Tick);
             // 
             // progressBar1
             // 
@@ -71,6 +71,7 @@
             // 
             // timer1
             // 
+            this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // About

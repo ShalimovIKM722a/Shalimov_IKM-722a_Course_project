@@ -17,7 +17,7 @@ namespace Shalimov_IKM_722a_Course_project
             InitializeComponent();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void tAbout_Tick(object sender, EventArgs e)
         {
             Close();
         }
