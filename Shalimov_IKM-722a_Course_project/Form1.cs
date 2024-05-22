@@ -77,7 +77,6 @@ namespace Shalimov_IKM_722a_Course_project
                 MajorObject.Task();
                 label1.Text = MajorObject.Read();
                 пускToolStripMenuItem.Text = "Стоп";
-                
             }
             else
             {
