@@ -41,8 +41,9 @@ namespace Shalimov_IKM_722a_Course_project
 
         private void tClock_Tick(object sender, EventArgs e)
         {
-            dateLabel.Text = DateTime.Now.ToLongDateString();
-            timeLabel.Text = DateTime.Now.ToLongTimeString();
+            tClock.Stop();
+            MessageBox.Show("Минуло 25 секунд", "Увага");
+            tClock.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -513,6 +514,17 @@ TXT(*.txt)|*.txt|CSV-файл (*.csv)|*.csv|Bin-файл (*.bin)|*.bin";
             {
                 richTextBox1.Text = File.ReadAllText(o.FileName, Encoding.Default);
             }
+        }
+
+        private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            Application.DoEvents();//Обробляє всі повідомлення Windows, які в даний момент
+                                   //знаходяться в черзі повідомлень.
+
+            if (MajorObject.Modify)
+                if (MessageBox.Show("Дані не були збережені. Продовжити вихід?", "УВАГА",
+                MessageBoxButtons.YesNo) == DialogResult.No)
+                    e.Cancel = true; // припинити закриття
         }
     }
 }
