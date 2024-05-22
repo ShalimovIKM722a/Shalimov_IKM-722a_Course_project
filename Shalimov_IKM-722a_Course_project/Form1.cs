@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
+using System.Text;
 
 
 namespace Shalimov_IKM_722a_Course_project
@@ -169,12 +170,13 @@ namespace Shalimov_IKM_722a_Course_project
         {
             string[] disks = System.IO.Directory.GetLogicalDrives();
             string disk = "";
-            for(int i = 0; i < disks.Length; i++)
+            int bytesInGigaBytes = 1073741824;
+            for (int i = 0; i < disks.Length; i++)
             {
                 try {
                     var D = new System.IO.DriveInfo(disks[i]);
-                    disk += D.Name + "-" + D.TotalSize.ToString() + "-"
-                        + D.TotalFreeSpace.ToString()+ (char)13;
+                    disk += D.Name + "-" + (D.TotalSize/ bytesInGigaBytes).ToString() + "-"
+                        + (D.TotalFreeSpace / bytesInGigaBytes).ToString()+ (char)13;
                 }
                 catch { 
                 disk += disks[i] + "- не готовий" + (char)13;
@@ -203,21 +205,7 @@ namespace Shalimov_IKM_722a_Course_project
             MajorObject.Find(tbSearch.Text);
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
+       
         void timer_Tick(object sender, EventArgs e)
         {
             dateLabel.Text = DateTime.Now.ToLongDateString();
@@ -291,23 +279,7 @@ namespace Shalimov_IKM_722a_Course_project
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        
         private void Enqueue_Click(object sender, EventArgs e)
         {
             MajorObject.myQueue.Enqueue(Queuetb.Text);
@@ -395,36 +367,6 @@ TXT(*.txt)|*.txt|CSV-файл (*.csv)|*.csv|Bin-файл (*.bin)|*.bin";
                 MajorObject.SaveToTextFile(MajorObject.ReadSaveTextFileName(), dgwOpen);
             else
                 зберегтиЯкToolStripMenuItem1_Click(sender, e);
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void Form1_Closing(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
 
 
@@ -562,6 +504,17 @@ TXT(*.txt)|*.txt|CSV-файл (*.csv)|*.csv|Bin-файл (*.bin)|*.bin";
 
         }
 
-        
+        private void відкритиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog();
+
+            o.Filter = @"Текстовий файл (*.txt)|*.txt|Текстовий файл
+TXT(*.txt)|*.txt|CSV-файл (*.csv)|*.csv|Bin-файл (*.bin)|*.bin";
+
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                richTextBox1.Text = File.ReadAllText(o.FileName, Encoding.Default);
+            }
+        }
     }
 }

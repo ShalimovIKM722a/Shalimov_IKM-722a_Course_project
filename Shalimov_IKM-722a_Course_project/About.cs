@@ -36,5 +36,7 @@ namespace Shalimov_IKM_722a_Course_project
             }
             timer1.Start();
         }
+
+        
     }
 }
