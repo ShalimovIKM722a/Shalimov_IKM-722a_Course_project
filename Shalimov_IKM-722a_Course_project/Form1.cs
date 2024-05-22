@@ -115,6 +115,7 @@ namespace Shalimov_IKM_722a_Course_project
             }
             else
             {
+
                 tClock.Stop();
                 MessageBox.Show("Неправильний символ", "Помилка");
                 tClock.Start();
