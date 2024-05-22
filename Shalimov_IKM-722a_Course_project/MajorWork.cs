@@ -46,14 +46,36 @@ namespace Shalimov_IKM_722a_Course_project
             return this.Result;
         }
         public void Task() {
-            if (this.Data.Length > 5) { 
-            this.Result=Convert.ToString(true);
-            }
-            else
+            try
             {
-                this.Result=Convert.ToString(false);
+                if (this.Data.Length != 0)
+                {
+                    this.Result = "Кожне п'яте слово вашого тексту: ";
+                    char[] separators = new char[] { ' ', ',', '.', ';', '-' };
+                    string[] words = Data.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                    if (words.Length < 50)
+                    {
+                        for (int i = 0; i < words.Length; i++)
+                        {
+                            if ((i + 1) % 5 == 0)
+                            {
+                                this.Result += " " + words[i];
+                            }
+                        }
+                        this.Modify = true;
+                    }
+                    else
+                    {
+                        this.Result = null;
+                        MessageBox.Show("Введіть текст до 50 слів", "Попередження!");
+                    }
+                }
             }
-            this.Modify = true; 
+            catch
+            {
+                MessageBox.Show("Порожній рядок", "Помилка!");
+            }
+
         }
 
         public void SetTime()

@@ -305,7 +305,7 @@
             // tbInput
             // 
             this.tbInput.Enabled = false;
-            this.tbInput.Location = new System.Drawing.Point(150, 165);
+            this.tbInput.Location = new System.Drawing.Point(20, 100);
             this.tbInput.Name = "tbInput";
             this.tbInput.Size = new System.Drawing.Size(239, 20);
             this.tbInput.TabIndex = 2;
@@ -313,7 +313,7 @@
             // 
             // bStart
             // 
-            this.bStart.Location = new System.Drawing.Point(207, 211);
+            this.bStart.Location = new System.Drawing.Point(77, 146);
             this.bStart.Name = "bStart";
             this.bStart.Size = new System.Drawing.Size(75, 23);
             this.bStart.TabIndex = 1;
@@ -324,7 +324,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(233, 128);
+            this.label1.Location = new System.Drawing.Point(30, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
