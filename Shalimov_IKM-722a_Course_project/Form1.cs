@@ -100,8 +100,6 @@ namespace Shalimov_IKM_722a_Course_project
 
             char inputChar = e.KeyChar;
             bool isValidChar = (inputChar >= 'А' && inputChar <= 'я') ||
-                               (inputChar >= 'a' && inputChar <= 'z') ||
-                               (inputChar >= 'A' && inputChar <= 'Z') ||
                                (inputChar == 'ї') || (inputChar == 'є') ||
                                (inputChar == 'ґ') || (inputChar == 'і') ||
                                (inputChar == 'Ї') || (inputChar == 'Є') ||
